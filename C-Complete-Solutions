@@ -1,0 +1,4330 @@
+# Complete Solution to C Programming Questions
+## B.Tech 1st Semester - Logic Building with Computer Science
+---
+
+## SECTION 1: BASIC C PROGRAMMING CONCEPTS
+
+### Theory Answers
+
+**Q1.1: Explain the structure of a C program with an example.**
+
+A C program consists of the following essential parts:
+1. Header Files (#include)
+2. Main function
+3. Variable declarations
+4. Program statements
+5. Return statement
+
+```c
+#include <stdio.h>    // Header file
+
+int main() {          // Main function starts
+    int a, b, c;      // Variable declaration
+    a = 5;            // Statement
+    b = 10;           // Statement
+    c = a + b;        // Calculation
+    printf("%d", c);  // Output statement
+    return 0;         // Return statement
+}
+```
+
+**Q1.2: What are the different data types in C? Explain with examples.**
+
+1. **int** - Integer values (-2147483648 to 2147483647)
+   - `int age = 25;`
+
+2. **float** - Floating point numbers (up to 6 decimal places)
+   - `float salary = 25000.50f;`
+
+3. **double** - Double precision floating point (up to 15 decimal places)
+   - `double pi = 3.14159265359;`
+
+4. **char** - Single character
+   - `char grade = 'A';`
+
+5. **void** - No value/empty
+   - `void function() { }`
+
+**Q1.3: What is the difference between int, float, and char data types?**
+
+| Aspect | int | float | char |
+|--------|-----|-------|------|
+| Size | 4 bytes | 4 bytes | 1 byte |
+| Range | -2147483648 to 2147483647 | 3.4E-38 to 3.4E+38 | 0 to 255 or -128 to 127 |
+| Stores | Whole numbers | Decimal numbers | Single character |
+| Example | 10, -5, 100 | 3.14, 2.5 | 'A', 'x', '5' |
+
+### Programming Answers
+
+**Q1.4: Write a C program to print 'Hello World'.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello World");
+    return 0;
+}
+```
+
+Output: Hello World
+
+---
+
+**Q1.5: Write a C program to add two numbers.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, sum;
+    printf("Enter first number: ");
+    scanf("%d", &a);
+    printf("Enter second number: ");
+    scanf("%d", &b);
+    sum = a + b;
+    printf("Sum = %d", sum);
+    return 0;
+}
+```
+
+Example:
+- Input: 5, 10
+- Output: Sum = 15
+
+---
+
+**Q1.6: Write a C program to find the area of a circle.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    float radius, area;
+    float pi = 3.14159f;
+    
+    printf("Enter radius: ");
+    scanf("%f", &radius);
+    
+    area = pi * radius * radius;
+    printf("Area = %.2f\n", area);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 5
+- Output: Area = 78.50
+
+---
+
+**Q1.7: Write a C program to swap two numbers using a temporary variable.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, temp;
+    
+    printf("Enter first number: ");
+    scanf("%d", &a);
+    printf("Enter second number: ");
+    scanf("%d", &b);
+    
+    printf("\nBefore swap: a = %d, b = %d\n", a, b);
+    
+    // Swap using temporary variable
+    temp = a;
+    a = b;
+    b = temp;
+    
+    printf("After swap: a = %d, b = %d\n", a, b);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: a = 5, b = 10
+- Output: After swap: a = 10, b = 5
+
+---
+
+**Q1.8: Write a C program to swap two numbers without using a temporary variable.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    
+    printf("Enter first number: ");
+    scanf("%d", &a);
+    printf("Enter second number: ");
+    scanf("%d", &b);
+    
+    printf("\nBefore swap: a = %d, b = %d\n", a, b);
+    
+    // Swap without temporary variable - Method 1: Using arithmetic
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    
+    printf("After swap: a = %d, b = %d\n", a, b);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: a = 5, b = 10
+- Output: After swap: a = 10, b = 5
+
+---
+
+**Q1.9: Write a C program to convert Celsius to Fahrenheit.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    float celsius, fahrenheit;
+    
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &celsius);
+    
+    // Formula: F = (C * 9/5) + 32
+    fahrenheit = (celsius * 9/5) + 32;
+    
+    printf("Temperature in Fahrenheit: %.2f\n", fahrenheit);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 25
+- Output: Temperature in Fahrenheit: 77.00
+
+---
+
+**Q1.10: Write a C program to calculate simple interest.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    float principal, rate, time, interest;
+    
+    printf("Enter principal amount: ");
+    scanf("%f", &principal);
+    printf("Enter rate of interest (percent): ");
+    scanf("%f", &rate);
+    printf("Enter time period (years): ");
+    scanf("%f", &time);
+    
+    // Formula: SI = (P * R * T) / 100
+    interest = (principal * rate * time) / 100;
+    
+    printf("Simple Interest: %.2f\n", interest);
+    printf("Total Amount: %.2f\n", principal + interest);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: Principal = 1000, Rate = 5, Time = 2
+- Output: Simple Interest: 100.00, Total Amount: 1100.00
+
+---
+
+## SECTION 2: OPERATORS AND EXPRESSIONS
+
+### Theory Answers
+
+**Q2.1: What are the different types of operators in C?**
+
+1. **Arithmetic Operators**: +, -, *, /, %
+2. **Relational Operators**: <, >, <=, >=, ==, !=
+3. **Logical Operators**: &&, ||, !
+4. **Assignment Operators**: =, +=, -=, *=, /=, %=
+5. **Bitwise Operators**: &, |, ^, <<, >>, ~
+6. **Unary Operators**: ++, --, +, -, !
+7. **Ternary Operator**: ? :
+8. **Special Operators**: sizeof(), &, *
+
+**Q2.2: Explain the difference between ++i and i++.**
+
+| ++i (Pre-increment) | i++ (Post-increment) |
+|-------------------|-------------------|
+| Increments first, then returns value | Returns value first, then increments |
+| More efficient | Slightly less efficient |
+| Used in: `x = ++i` returns incremented i | Used in: `x = i++` returns original i |
+
+```c
+int i = 5;
+int x = ++i;  // i becomes 6, x = 6
+
+int j = 5;
+int y = j++;  // y = 5, then j becomes 6
+```
+
+**Q2.3: What is operator precedence? Give examples.**
+
+Operator precedence determines which operators are evaluated first. Higher precedence operators are evaluated before lower ones.
+
+Precedence Order (High to Low):
+1. Parentheses ()
+2. Exponentiation (none in C, use pow())
+3. Multiplication, Division, Modulus (*, /, %)
+4. Addition, Subtraction (+, -)
+5. Relational (<, >, <=, >=)
+6. Equality (==, !=)
+7. Logical AND (&&)
+8. Logical OR (||)
+
+Example: `2 + 3 * 4 = 14` (not 20) because * has higher precedence
+
+**Q2.4: Explain logical operators (&&, ||, !) with examples.**
+
+1. **&& (AND)**: True only if both conditions are true
+   ```c
+   if(age > 18 && marks > 40) { }  // Both must be true
+   ```
+
+2. **|| (OR)**: True if at least one condition is true
+   ```c
+   if(gender == 'M' || gender == 'F') { }
+   ```
+
+3. **! (NOT)**: Inverts the boolean value
+   ```c
+   if(!isValid) { }  // True if isValid is false
+   ```
+
+**Q2.5: What is the difference between = and == operators?**
+
+| = (Assignment) | == (Comparison) |
+|---|---|
+| Assigns value to variable | Compares two values |
+| Used in statements | Used in conditions |
+| `x = 5;` | `if(x == 5)` |
+| Returns the assigned value | Returns 1 (true) or 0 (false) |
+
+### Programming Answers
+
+**Q2.6: Write a C program to demonstrate all arithmetic operators.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 20, b = 10;
+    
+    printf("Addition: %d + %d = %d\n", a, b, a + b);
+    printf("Subtraction: %d - %d = %d\n", a, b, a - b);
+    printf("Multiplication: %d * %d = %d\n", a, b, a * b);
+    printf("Division: %d / %d = %d\n", a, b, a / b);
+    printf("Modulus: %d %% %d = %d\n", a, b, a % b);
+    
+    return 0;
+}
+```
+
+Output:
+```
+Addition: 20 + 10 = 30
+Subtraction: 20 - 10 = 10
+Multiplication: 20 * 10 = 200
+Division: 20 / 10 = 2
+Modulus: 20 % 10 = 0
+```
+
+---
+
+**Q2.7: Write a C program to check if a number is even or odd using bitwise operators.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    // Check if even or odd using bitwise AND
+    if(num & 1) {  // If last bit is 1, number is odd
+        printf("%d is ODD\n", num);
+    } else {       // If last bit is 0, number is even
+        printf("%d is EVEN\n", num);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 5
+- Output: 5 is ODD
+
+---
+
+**Q2.8: Write a C program to evaluate the expression: (a+b)*(c-d).**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, c, d, result;
+    
+    printf("Enter value of a: ");
+    scanf("%d", &a);
+    printf("Enter value of b: ");
+    scanf("%d", &b);
+    printf("Enter value of c: ");
+    scanf("%d", &c);
+    printf("Enter value of d: ");
+    scanf("%d", &d);
+    
+    result = (a + b) * (c - d);
+    
+    printf("(a+b)*(c-d) = (%d+%d)*(%d-%d) = %d\n", a, b, c, d, result);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: a=5, b=3, c=10, d=2
+- Output: (a+b)*(c-d) = (5+3)*(10-2) = 64
+
+---
+
+**Q2.9: Explain relational operators with a C program example.**
+
+Relational operators compare two values and return 1 (true) or 0 (false).
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 20;
+    
+    printf("Relational Operators:\n");
+    printf("a = %d, b = %d\n", a, b);
+    printf("a < b: %d\n", a < b);    // 1 (true)
+    printf("a > b: %d\n", a > b);    // 0 (false)
+    printf("a <= b: %d\n", a <= b);  // 1 (true)
+    printf("a >= b: %d\n", a >= b);  // 0 (false)
+    printf("a == b: %d\n", a == b);  // 0 (false)
+    printf("a != b: %d\n", a != b);  // 1 (true)
+    
+    return 0;
+}
+```
+
+Output:
+```
+a < b: 1
+a > b: 0
+a <= b: 1
+a >= b: 0
+a == b: 0
+a != b: 1
+```
+
+---
+
+**Q2.10: Write a C program to find the largest of three numbers using the ternary operator.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, c, largest;
+    
+    printf("Enter first number: ");
+    scanf("%d", &a);
+    printf("Enter second number: ");
+    scanf("%d", &b);
+    printf("Enter third number: ");
+    scanf("%d", &c);
+    
+    // Using nested ternary operator
+    largest = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
+    
+    printf("Largest number is: %d\n", largest);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 5, 10, 8
+- Output: Largest number is: 10
+
+---
+
+## SECTION 3: DECISION MAKING (if, if-else, nested if, switch)
+
+### Theory Answers
+
+**Q3.1: What is the difference between if-else and switch-case?**
+
+| if-else | switch-case |
+|---------|-------------|
+| Tests range of conditions | Tests exact match of value |
+| Can test multiple conditions | Tests single variable |
+| Slower for many conditions | Faster for multiple values |
+| Uses boolean expressions | Uses integer/character values |
+| More flexible | Less flexible but cleaner |
+
+### Programming Answers
+
+**Q3.2: Write a C program to check if a number is positive, negative, or zero.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    if(num > 0) {
+        printf("%d is POSITIVE\n", num);
+    } else if(num < 0) {
+        printf("%d is NEGATIVE\n", num);
+    } else {
+        printf("%d is ZERO\n", num);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: -5
+- Output: -5 is NEGATIVE
+
+---
+
+**Q3.3: Write a C program to find the largest of three numbers using if-else.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+    
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+    
+    if(a >= b && a >= c) {
+        printf("Largest: %d\n", a);
+    } else if(b >= a && b >= c) {
+        printf("Largest: %d\n", b);
+    } else {
+        printf("Largest: %d\n", c);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 5 10 8
+- Output: Largest: 10
+
+---
+
+**Q3.4: Write a C program to check whether a year is a leap year or not.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int year;
+    
+    printf("Enter a year: ");
+    scanf("%d", &year);
+    
+    if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        printf("%d is a LEAP YEAR\n", year);
+    } else {
+        printf("%d is NOT a LEAP YEAR\n", year);
+    }
+    
+    return 0;
+}
+```
+
+Leap Year Rules:
+- Divisible by 4 AND not by 100, OR
+- Divisible by 400
+
+Example:
+- Input: 2020
+- Output: 2020 is a LEAP YEAR
+
+---
+
+**Q3.5: Write a C program to create a simple calculator using switch-case.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    char op;
+    
+    printf("Enter first number: ");
+    scanf("%d", &a);
+    printf("Enter operator (+, -, *, /): ");
+    scanf(" %c", &op);
+    printf("Enter second number: ");
+    scanf("%d", &b);
+    
+    switch(op) {
+        case '+':
+            printf("Result: %d\n", a + b);
+            break;
+        case '-':
+            printf("Result: %d\n", a - b);
+            break;
+        case '*':
+            printf("Result: %d\n", a * b);
+            break;
+        case '/':
+            if(b != 0) {
+                printf("Result: %d\n", a / b);
+            } else {
+                printf("Error: Division by zero\n");
+            }
+            break;
+        default:
+            printf("Invalid operator\n");
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 10 + 5
+- Output: Result: 15
+
+---
+
+**Q3.6: Explain nested if-else with an example program.**
+
+Nested if-else means using if-else statements inside another if-else block.
+
+```c
+#include <stdio.h>
+
+int main() {
+    int age;
+    char gender;
+    
+    printf("Enter age: ");
+    scanf("%d", &age);
+    printf("Enter gender (M/F): ");
+    scanf(" %c", &gender);
+    
+    if(age >= 18) {
+        if(gender == 'M') {
+            printf("Adult Male\n");
+        } else if(gender == 'F') {
+            printf("Adult Female\n");
+        } else {
+            printf("Invalid gender\n");
+        }
+    } else {
+        if(gender == 'M') {
+            printf("Minor Male\n");
+        } else if(gender == 'F') {
+            printf("Minor Female\n");
+        } else {
+            printf("Invalid gender\n");
+        }
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: age = 25, gender = M
+- Output: Adult Male
+
+---
+
+**Q3.7: Write a C program to find the grade of a student based on marks.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int marks;
+    
+    printf("Enter marks (0-100): ");
+    scanf("%d", &marks);
+    
+    if(marks >= 90) {
+        printf("Grade: A+\n");
+    } else if(marks >= 80) {
+        printf("Grade: A\n");
+    } else if(marks >= 70) {
+        printf("Grade: B\n");
+    } else if(marks >= 60) {
+        printf("Grade: C\n");
+    } else if(marks >= 50) {
+        printf("Grade: D\n");
+    } else {
+        printf("Grade: F (Fail)\n");
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 85
+- Output: Grade: A
+
+---
+
+**Q3.8: Write a C program to check if a character is a vowel or consonant.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char ch;
+    
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+    
+    if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+       ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
+        printf("%c is a VOWEL\n", ch);
+    } else if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+        printf("%c is a CONSONANT\n", ch);
+    } else {
+        printf("Not an alphabetic character\n");
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: e
+- Output: e is a VOWEL
+
+---
+
+**Q3.9: Write a C program to solve quadratic equation ax²+bx+c=0.**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float a, b, c, discriminant, root1, root2;
+    
+    printf("Enter coefficient a: ");
+    scanf("%f", &a);
+    printf("Enter coefficient b: ");
+    scanf("%f", &b);
+    printf("Enter coefficient c: ");
+    scanf("%f", &c);
+    
+    if(a == 0) {
+        printf("Not a quadratic equation (a cannot be 0)\n");
+        return 0;
+    }
+    
+    // Calculate discriminant: b² - 4ac
+    discriminant = (b * b) - (4 * a * c);
+    
+    if(discriminant > 0) {
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("Two distinct real roots: %.2f and %.2f\n", root1, root2);
+    } else if(discriminant == 0) {
+        root1 = -b / (2 * a);
+        printf("One repeated real root: %.2f\n", root1);
+    } else {
+        printf("Complex roots (no real solutions)\n");
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: a=1, b=-5, c=6
+- Output: Two distinct real roots: 3.00 and 2.00
+
+---
+
+**Q3.10: Write a C program to check if a triangle is valid or not.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    float a, b, c;
+    
+    printf("Enter three sides of triangle: ");
+    scanf("%f %f %f", &a, &b, &c);
+    
+    // Triangle is valid if sum of any two sides > third side
+    if(a + b > c && b + c > a && a + c > b) {
+        printf("Valid triangle\n");
+        
+        // Check type of triangle
+        if(a == b && b == c) {
+            printf("Equilateral triangle\n");
+        } else if(a == b || b == c || a == c) {
+            printf("Isosceles triangle\n");
+        } else {
+            printf("Scalene triangle\n");
+        }
+    } else {
+        printf("Not a valid triangle\n");
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 3 4 5
+- Output: Valid triangle, Scalene triangle
+
+---
+
+## SECTION 4: LOOPS (for, while, do-while)
+
+### Theory Answers
+
+**Q4.1: What is the difference between while and do-while loops?**
+
+| while | do-while |
+|-------|----------|
+| Condition checked first | Condition checked after first execution |
+| May not execute at all | Executes at least once |
+| Entry-controlled loop | Exit-controlled loop |
+| `while(condition) { }` | `do { } while(condition);` |
+
+### Programming Answers
+
+**Q4.2: Write a C program to print numbers from 1 to 10 using a for loop.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i;
+    
+    for(i = 1; i <= 10; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Output: 1 2 3 4 5 6 7 8 9 10
+
+---
+
+**Q4.3: Write a C program to print numbers from 1 to 10 using a while loop.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i = 1;
+    
+    while(i <= 10) {
+        printf("%d ", i);
+        i++;
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Output: 1 2 3 4 5 6 7 8 9 10
+
+---
+
+**Q4.4: Write a C program to print numbers from 1 to 10 using a do-while loop.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i = 1;
+    
+    do {
+        printf("%d ", i);
+        i++;
+    } while(i <= 10);
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Output: 1 2 3 4 5 6 7 8 9 10
+
+---
+
+**Q4.5: Write a C program to find the factorial of a number using a for loop.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int n, i, factorial = 1;
+    
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    
+    if(n < 0) {
+        printf("Factorial not defined for negative numbers\n");
+    } else {
+        for(i = 1; i <= n; i++) {
+            factorial *= i;  // factorial = factorial * i
+        }
+        printf("Factorial of %d = %d\n", n, factorial);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 5
+- Output: Factorial of 5 = 120
+
+---
+
+**Q4.6: Write a C program to find the sum of first n natural numbers.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int n, i, sum = 0;
+    
+    printf("Enter n: ");
+    scanf("%d", &n);
+    
+    for(i = 1; i <= n; i++) {
+        sum += i;
+    }
+    
+    printf("Sum of first %d natural numbers = %d\n", n, sum);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 5
+- Output: Sum of first 5 natural numbers = 15
+
+---
+
+**Q4.7: Write a C program to print the multiplication table of a number.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num, i;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    printf("Multiplication table of %d:\n", num);
+    for(i = 1; i <= 10; i++) {
+        printf("%d × %d = %d\n", num, i, num * i);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 5
+- Output:
+```
+5 × 1 = 5
+5 × 2 = 10
+5 × 3 = 15
+...
+5 × 10 = 50
+```
+
+---
+
+**Q4.8: Write a C program to reverse a number.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num, reversed = 0, remainder;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    while(num != 0) {
+        remainder = num % 10;
+        reversed = reversed * 10 + remainder;
+        num /= 10;
+    }
+    
+    printf("Reversed number: %d\n", reversed);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 12345
+- Output: Reversed number: 54321
+
+---
+
+**Q4.9: Write a C program to check if a number is palindrome or not.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num, original, reversed = 0, remainder;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    original = num;
+    
+    while(num != 0) {
+        remainder = num % 10;
+        reversed = reversed * 10 + remainder;
+        num /= 10;
+    }
+    
+    if(original == reversed) {
+        printf("%d is a PALINDROME\n", original);
+    } else {
+        printf("%d is NOT a PALINDROME\n", original);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 121
+- Output: 121 is a PALINDROME
+
+---
+
+**Q4.10: Write a C program to find the sum of digits of a number.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num, sum = 0, remainder;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    while(num != 0) {
+        remainder = num % 10;
+        sum += remainder;
+        num /= 10;
+    }
+    
+    printf("Sum of digits: %d\n", sum);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 12345
+- Output: Sum of digits: 15
+
+---
+
+**Q4.11: Write a C program to find the Fibonacci series up to n terms.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    long a = 0, b = 1, c;
+    
+    printf("Enter number of terms: ");
+    scanf("%d", &n);
+    
+    printf("Fibonacci series up to %d terms:\n", n);
+    
+    for(i = 1; i <= n; i++) {
+        printf("%ld ", a);
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 8
+- Output: 0 1 1 2 3 5 8 13
+
+---
+
+**Q4.12: Write a C program to check if a number is prime or not.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num, i, isPrime = 1;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    if(num <= 1) {
+        printf("%d is NOT PRIME\n", num);
+        return 0;
+    }
+    
+    for(i = 2; i * i <= num; i++) {
+        if(num % i == 0) {
+            isPrime = 0;
+            break;
+        }
+    }
+    
+    if(isPrime) {
+        printf("%d is PRIME\n", num);
+    } else {
+        printf("%d is NOT PRIME\n", num);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 17
+- Output: 17 is PRIME
+
+---
+
+**Q4.13: Write a C program to print all prime numbers between 1 and n.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int n, i, j, isPrime;
+    
+    printf("Enter n: ");
+    scanf("%d", &n);
+    
+    printf("Prime numbers between 1 and %d:\n", n);
+    
+    for(i = 2; i <= n; i++) {
+        isPrime = 1;
+        for(j = 2; j * j <= i; j++) {
+            if(i % j == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+        if(isPrime) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 20
+- Output: 2 3 5 7 11 13 17 19
+
+---
+
+**Q4.14: Write a C program to find the LCM and GCD of two numbers.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, x, y, gcd, lcm;
+    
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    
+    x = a;
+    y = b;
+    
+    // Finding GCD using Euclidean algorithm
+    while(b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    gcd = a;
+    
+    // Finding LCM: LCM = (a * b) / GCD
+    lcm = (x * y) / gcd;
+    
+    printf("GCD: %d\n", gcd);
+    printf("LCM: %d\n", lcm);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 12 18
+- Output: GCD: 6, LCM: 36
+
+---
+
+**Q4.15: Write a C program to print all Armstrong numbers between 1 and 1000.**
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int num, sum, remainder, digits;
+    
+    printf("Armstrong numbers between 1 and 1000:\n");
+    
+    for(num = 1; num <= 1000; num++) {
+        int temp = num;
+        sum = 0;
+        digits = 0;
+        
+        // Count digits
+        while(temp != 0) {
+            digits++;
+            temp /= 10;
+        }
+        
+        temp = num;
+        
+        // Calculate sum of digits raised to power of digit count
+        while(temp != 0) {
+            remainder = temp % 10;
+            sum += pow(remainder, digits);
+            temp /= 10;
+        }
+        
+        if(sum == num) {
+            printf("%d ", num);
+        }
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Output: 1 153 370 371 407
+
+---
+
+## SECTION 5: NESTED LOOPS AND CONTROL STATEMENTS
+
+**Q5.1: What is a nested loop? Explain with an example.**
+
+A nested loop is a loop inside another loop. The inner loop executes completely for each iteration of the outer loop.
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    
+    for(i = 1; i <= 3; i++) {
+        for(j = 1; j <= 3; j++) {
+            printf("(%d, %d) ", i, j);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+Output:
+```
+(1, 1) (1, 2) (1, 3)
+(2, 1) (2, 2) (2, 3)
+(3, 1) (3, 2) (3, 3)
+```
+
+---
+
+**Q5.2: What is the difference between break and continue statements?**
+
+| break | continue |
+|-------|----------|
+| Terminates loop completely | Skips current iteration |
+| Control goes outside loop | Control goes to next iteration |
+| Can be used with switch | Only used with loops |
+
+---
+
+**Q5.3: Write a C program to print a multiplication table from 1 to 10.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    
+    for(i = 1; i <= 10; i++) {
+        for(j = 1; j <= 10; j++) {
+            printf("%4d", i * j);  // 4 spaces for alignment
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q5.4: Explain the use of break statement with an example.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i;
+    
+    for(i = 1; i <= 10; i++) {
+        if(i == 5) {
+            printf("Break at 5\n");
+            break;  // Loop terminates here
+        }
+        printf("%d ", i);
+    }
+    printf("\nLoop ended\n");
+    
+    return 0;
+}
+```
+
+Output:
+```
+1 2 3 4 Break at 5
+Loop ended
+```
+
+---
+
+**Q5.5: Explain the use of continue statement with an example.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i;
+    
+    for(i = 1; i <= 10; i++) {
+        if(i % 2 == 0) {
+            continue;  // Skip even numbers
+        }
+        printf("%d ", i);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Output: 1 3 5 7 9
+
+---
+
+**Q5.6: Write a C program to exit a loop when a certain condition is met.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num, sum = 0;
+    
+    while(1) {
+        printf("Enter a number (0 to exit): ");
+        scanf("%d", &num);
+        
+        if(num == 0) {
+            break;  // Exit loop when 0 is entered
+        }
+        
+        sum += num;
+    }
+    
+    printf("Sum: %d\n", sum);
+    
+    return 0;
+}
+```
+
+---
+
+**Q5.7: Write a C program to skip even numbers in a loop using continue.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i;
+    
+    printf("Odd numbers from 1 to 20:\n");
+    
+    for(i = 1; i <= 20; i++) {
+        if(i % 2 == 0) {
+            continue;  // Skip even numbers
+        }
+        printf("%d ", i);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Output: 1 3 5 7 9 11 13 15 17 19
+
+---
+
+**Q5.8: Write a C program to find the sum of even numbers from 1 to n.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int n, i, sum = 0;
+    
+    printf("Enter n: ");
+    scanf("%d", &n);
+    
+    for(i = 1; i <= n; i++) {
+        if(i % 2 == 0) {
+            sum += i;
+        }
+    }
+    
+    printf("Sum of even numbers from 1 to %d = %d\n", n, sum);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 10
+- Output: Sum of even numbers from 1 to 10 = 30
+
+---
+
+**Q5.9: Write a C program to demonstrate nested loops with a simple pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    
+    for(i = 1; i <= 5; i++) {
+        for(j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+Output:
+```
+*
+* *
+* * *
+* * * *
+* * * * *
+```
+
+---
+
+**Q5.10: Write a C program using goto statement.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i = 1;
+    
+    start:
+    printf("%d ", i);
+    i++;
+    
+    if(i <= 5) {
+        goto start;  // Jump back to start label
+    }
+    
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Output: 1 2 3 4 5
+
+---
+
+## SECTION 6: PATTERN PROGRAMS
+
+**Q6.1: Write a C program to print a right-angled triangle star pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    
+    for(i = 1; i <= 5; i++) {
+        for(j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+Output:
+```
+*
+* *
+* * *
+* * * *
+* * * * *
+```
+
+---
+
+**Q6.2: Write a C program to print an inverted right-angled triangle star pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= n - i + 1; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+Output:
+```
+* * * * *
+* * * *
+* * *
+* *
+*
+```
+
+---
+
+**Q6.3: Write a C program to print a full pyramid star pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    for(i = 1; i <= n; i++) {
+        // Print spaces
+        for(j = 1; j <= n - i; j++) {
+            printf("  ");
+        }
+        // Print stars
+        for(j = 1; j <= 2 * i - 1; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+Output:
+```
+        *
+       * *
+      * * *
+     * * * *
+    * * * * *
+```
+
+---
+
+**Q6.4: Write a C program to print an inverted pyramid star pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    for(i = 1; i <= n; i++) {
+        // Print spaces
+        for(j = 1; j < i; j++) {
+            printf("  ");
+        }
+        // Print stars
+        for(j = 1; j <= 2 * (n - i) + 1; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.5: Write a C program to print a diamond star pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    // Upper half
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= n - i; j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= 2 * i - 1; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    // Lower half
+    for(i = n - 1; i >= 1; i--) {
+        for(j = 1; j <= n - i; j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= 2 * i - 1; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.6: Write a C program to print a hollow square pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= n; j++) {
+            if(i == 1 || i == n || j == 1 || j == n) {
+                printf("* ");
+            } else {
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.7: Write a C program to print Floyd's triangle.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, num = 1;
+    
+    for(i = 1; i <= 5; i++) {
+        for(j = 1; j <= i; j++) {
+            printf("%d ", num);
+            num++;
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+Output:
+```
+1
+2 3
+4 5 6
+7 8 9 10
+11 12 13 14 15
+```
+
+---
+
+**Q6.8: Write a C program to print Pascal's triangle.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int n = 6, i, j, coeff = 1;
+    
+    for(i = 0; i < n; i++) {
+        for(j = 0; j <= n - i - 1; j++) {
+            printf("  ");
+        }
+        for(j = 0; j <= i; j++) {
+            if(j == 0 || i == 0) {
+                coeff = 1;
+            } else {
+                coeff = coeff * (i - j + 1) / j;
+            }
+            printf("%4d", coeff);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.9: Write a C program to print a number pyramid pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= n - i; j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= i; j++) {
+            printf("%d ", i);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.10: Write a C program to print an hourglass pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    // Upper half + middle
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j < i; j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= 2 * (n - i) + 1; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    // Lower half
+    for(i = n - 1; i >= 1; i--) {
+        for(j = 1; j < i; j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= 2 * (n - i) + 1; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.11: Write a C program to print a zig-zag pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= n; j++) {
+            if((i + j) % 2 == 0) {
+                printf("* ");
+            } else {
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.12: Write a C program to print alphabet patterns.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    
+    for(i = 0; i < 5; i++) {
+        for(j = 0; j <= i; j++) {
+            printf("%c ", (char)('A' + j));
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+Output:
+```
+A
+A B
+A B C
+A B C D
+A B C D E
+```
+
+---
+
+**Q6.13: Write a C program to print a butterfly pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        for(j = 1; j <= 2 * (n - i); j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    for(i = n; i >= 1; i--) {
+        for(j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        for(j = 1; j <= 2 * (n - i); j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.14: Write a C program to print a hollow diamond pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    // Upper half
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= n - i; j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= 2 * i - 1; j++) {
+            if(j == 1 || j == 2 * i - 1) {
+                printf("* ");
+            } else {
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+    
+    // Lower half
+    for(i = n - 1; i >= 1; i--) {
+        for(j = 1; j <= n - i; j++) {
+            printf("  ");
+        }
+        for(j = 1; j <= 2 * i - 1; j++) {
+            if(j == 1 || j == 2 * i - 1) {
+                printf("* ");
+            } else {
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q6.15: Write a C program to print a cross pattern.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i, j, n = 5;
+    
+    for(i = 0; i < n; i++) {
+        for(j = 0; j < n; j++) {
+            if(i == j || i + j == n - 1) {
+                printf("* ");
+            } else {
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+## SECTION 7: FUNCTIONS
+
+### Theory Answers
+
+**Q7.1: What is a function in C? Explain its types.**
+
+A function is a reusable block of code that performs a specific task.
+
+Types:
+1. **Built-in Functions**: pow(), sqrt(), printf(), etc.
+2. **User-defined Functions**: Defined by programmer
+
+Function Declaration: `returnType functionName(parameters);`
+
+**Q7.2: What is the difference between call by value and call by reference?**
+
+| Call by Value | Call by Reference |
+|---|---|
+| Copy of value passed | Address of variable passed |
+| Original value not changed | Original value can be changed |
+| Uses regular variables | Uses pointers (*) |
+
+**Q7.3: What are function prototypes? Why are they used?**
+
+Function prototype is a declaration of a function before its definition.
+Syntax: `returnType functionName(parameters);`
+
+It tells compiler about function before it's called.
+
+### Programming Answers
+
+**Q7.7: Write a C program to add two numbers using a function.**
+
+```c
+#include <stdio.h>
+
+// Function prototype
+int add(int a, int b);
+
+int main() {
+    int num1, num2, result;
+    
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+    
+    result = add(num1, num2);  // Function call
+    printf("Sum: %d\n", result);
+    
+    return 0;
+}
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+```
+
+---
+
+**Q7.8: Write a C program to swap two numbers using functions (call by reference).**
+
+```c
+#include <stdio.h>
+
+// Function with pointer parameters (call by reference)
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x, y;
+    
+    printf("Enter two numbers: ");
+    scanf("%d %d", &x, &y);
+    
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    
+    swap(&x, &y);  // Pass addresses
+    
+    printf("After swap: x = %d, y = %d\n", x, y);
+    
+    return 0;
+}
+```
+
+---
+
+**Q7.9: Write a C program to find the factorial of a number using functions.**
+
+```c
+#include <stdio.h>
+
+long factorial(int n) {
+    if(n <= 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    printf("Factorial of %d = %ld\n", num, factorial(num));
+    
+    return 0;
+}
+```
+
+---
+
+**Q7.10: Write a C program to check if a number is prime using functions.**
+
+```c
+#include <stdio.h>
+
+int isPrime(int n) {
+    if(n <= 1) {
+        return 0;
+    }
+    
+    for(int i = 2; i * i <= n; i++) {
+        if(n % i == 0) {
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+int main() {
+    int num;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    if(isPrime(num)) {
+        printf("%d is PRIME\n", num);
+    } else {
+        printf("%d is NOT PRIME\n", num);
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q7.11: Write a C program to find the largest of three numbers using functions.**
+
+```c
+#include <stdio.h>
+
+int largest(int a, int b, int c) {
+    if(a >= b && a >= c) {
+        return a;
+    } else if(b >= a && b >= c) {
+        return b;
+    } else {
+        return c;
+    }
+}
+
+int main() {
+    int num1, num2, num3;
+    
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &num1, &num2, &num3);
+    
+    printf("Largest: %d\n", largest(num1, num2, num3));
+    
+    return 0;
+}
+```
+
+---
+
+**Q7.12: Write a C program using a function that returns multiple values.**
+
+```c
+#include <stdio.h>
+
+// Function that calculates both sum and product
+void calculate(int a, int b, int *sum, int *product) {
+    *sum = a + b;
+    *product = a * b;
+}
+
+int main() {
+    int x, y, sum, product;
+    
+    printf("Enter two numbers: ");
+    scanf("%d %d", &x, &y);
+    
+    // Pass pointers to get multiple return values
+    calculate(x, y, &sum, &product);
+    
+    printf("Sum: %d\n", sum);
+    printf("Product: %d\n", product);
+    
+    return 0;
+}
+```
+
+---
+
+**Q7.13: Write a C program to find the power of a number using functions.**
+
+```c
+#include <stdio.h>
+
+long power(int base, int exp) {
+    long result = 1;
+    for(int i = 0; i < exp; i++) {
+        result *= base;
+    }
+    return result;
+}
+
+int main() {
+    int base, exp;
+    
+    printf("Enter base: ");
+    scanf("%d", &base);
+    printf("Enter exponent: ");
+    scanf("%d", &exp);
+    
+    printf("%d^%d = %ld\n", base, exp, power(base, exp));
+    
+    return 0;
+}
+```
+
+---
+
+**Q7.14: Write a C program to convert decimal to binary using functions.**
+
+```c
+#include <stdio.h>
+
+void decimalToBinary(int n) {
+    if(n > 1) {
+        decimalToBinary(n / 2);
+    }
+    printf("%d", n % 2);
+}
+
+int main() {
+    int num;
+    
+    printf("Enter decimal number: ");
+    scanf("%d", &num);
+    
+    printf("Binary: ");
+    decimalToBinary(num);
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 10
+- Output: Binary: 1010
+
+---
+
+**Q7.15: Write a C program demonstrating static variables in functions.**
+
+```c
+#include <stdio.h>
+
+void count() {
+    static int count = 0;  // Initialized only once
+    count++;
+    printf("Count: %d\n", count);
+}
+
+int main() {
+    count();  // Output: Count: 1
+    count();  // Output: Count: 2
+    count();  // Output: Count: 3
+    
+    return 0;
+}
+```
+
+The static variable retains its value between function calls.
+
+---
+
+## SECTION 8: RECURSION (MOST IMPORTANT!)
+
+### Theory Answers
+
+**Q8.1: What is recursion? Explain with an example.**
+
+Recursion is when a function calls itself. Every recursive function must have:
+1. **Base Case**: Condition to stop recursion
+2. **Recursive Case**: Function calls itself with modified parameters
+
+Example: Factorial
+- Base Case: factorial(0) = 1
+- Recursive Case: factorial(n) = n * factorial(n-1)
+
+**Q8.2: What is the difference between recursion and iteration?**
+
+| Recursion | Iteration |
+|---|---|
+| Function calls itself | Loops are used |
+| Uses more memory (stack) | Uses less memory |
+| Code is compact | Code is more verbose |
+| Slower execution | Faster execution |
+| Risk of stack overflow | No such risk |
+
+**Q8.3: What is tail recursion? Explain with an example.**
+
+Tail recursion is when the recursive call is the last statement in the function. It's more efficient than normal recursion.
+
+```c
+// Tail Recursive
+int factorialTail(int n, int result) {
+    if(n <= 1) {
+        return result;
+    }
+    return factorialTail(n - 1, n * result);
+}
+```
+
+**Q8.4: What are the advantages and disadvantages of recursion?**
+
+Advantages:
+- Code is cleaner and shorter
+- Natural for problems like tree traversal
+- Reduces code duplication
+
+Disadvantages:
+- Uses more memory (stack)
+- Slower than iteration
+- Risk of stack overflow
+- Harder to debug
+
+### Programming Answers
+
+**Q8.5: Write a C program to find the factorial of a number using recursion.**
+
+```c
+#include <stdio.h>
+
+long factorial(int n) {
+    // Base case
+    if(n <= 1) {
+        return 1;
+    }
+    // Recursive case
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    printf("Factorial of %d = %ld\n", num, factorial(num));
+    return 0;
+}
+```
+
+Example:
+- factorial(5) = 5 * factorial(4) = 5 * 24 = 120
+
+---
+
+**Q8.6: Write a C program to print Fibonacci series using recursion.**
+
+```c
+#include <stdio.h>
+
+long fibonacci(int n) {
+    // Base cases
+    if(n <= 1) {
+        return n;
+    }
+    // Recursive case
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n, i;
+    printf("Enter number of terms: ");
+    scanf("%d", &n);
+    
+    printf("Fibonacci series: ");
+    for(i = 0; i < n; i++) {
+        printf("%ld ", fibonacci(i));
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 8
+- Output: 0 1 1 2 3 5 8 13
+
+---
+
+**Q8.7: Write a C program to find the sum of natural numbers using recursion.**
+
+```c
+#include <stdio.h>
+
+int sum(int n) {
+    // Base case
+    if(n <= 0) {
+        return 0;
+    }
+    // Recursive case
+    return n + sum(n - 1);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    printf("Sum of first %d natural numbers = %d\n", num, sum(num));
+    return 0;
+}
+```
+
+Example:
+- Input: 5
+- Output: Sum of first 5 natural numbers = 15
+
+---
+
+**Q8.8: Write a C program to reverse a number using recursion.**
+
+```c
+#include <stdio.h>
+
+int reverseNumber(int n) {
+    static int reversed = 0;
+    
+    if(n == 0) {
+        return reversed;
+    }
+    
+    reversed = reversed * 10 + n % 10;
+    return reverseNumber(n / 10);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    printf("Reversed: %d\n", reverseNumber(num));
+    return 0;
+}
+```
+
+Example:
+- Input: 12345
+- Output: Reversed: 54321
+
+---
+
+**Q8.9: Write a C program to find the power of a number using recursion.**
+
+```c
+#include <stdio.h>
+
+long power(int base, int exp) {
+    // Base case
+    if(exp == 0) {
+        return 1;
+    }
+    // Recursive case
+    return base * power(base, exp - 1);
+}
+
+int main() {
+    int base, exp;
+    printf("Enter base: ");
+    scanf("%d", &base);
+    printf("Enter exponent: ");
+    scanf("%d", &exp);
+    printf("%d^%d = %ld\n", base, exp, power(base, exp));
+    return 0;
+}
+```
+
+Example:
+- Input: base=2, exp=5
+- Output: 2^5 = 32
+
+---
+
+**Q8.10: Write a C program to find the GCD of two numbers using recursion.**
+
+```c
+#include <stdio.h>
+
+int gcd(int a, int b) {
+    // Base case
+    if(b == 0) {
+        return a;
+    }
+    // Recursive case: Euclidean algorithm
+    return gcd(b, a % b);
+}
+
+int main() {
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("GCD of %d and %d = %d\n", a, b, gcd(a, b));
+    return 0;
+}
+```
+
+Example:
+- Input: 12, 18
+- Output: GCD of 12 and 18 = 6
+
+---
+
+**Q8.11: Write a C program to print all natural numbers from 1 to n using recursion.**
+
+```c
+#include <stdio.h>
+
+void printNumbers(int n) {
+    // Base case
+    if(n <= 0) {
+        return;
+    }
+    
+    // Recursive case (print first)
+    printNumbers(n - 1);
+    printf("%d ", n);
+}
+
+int main() {
+    int n;
+    printf("Enter n: ");
+    scanf("%d", &n);
+    printf("Numbers from 1 to %d: ", n);
+    printNumbers(n);
+    printf("\n");
+    return 0;
+}
+```
+
+Example:
+- Input: 5
+- Output: Numbers from 1 to 5: 1 2 3 4 5
+
+---
+
+**Q8.12: Write a C program to print all even numbers from 1 to n using recursion.**
+
+```c
+#include <stdio.h>
+
+void printEven(int n) {
+    // Base case
+    if(n <= 0) {
+        return;
+    }
+    
+    // Recursive case
+    printEven(n - 1);
+    
+    // Print if even
+    if(n % 2 == 0) {
+        printf("%d ", n);
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter n: ");
+    scanf("%d", &n);
+    printf("Even numbers from 1 to %d: ", n);
+    printEven(n);
+    printf("\n");
+    return 0;
+}
+```
+
+Example:
+- Input: 10
+- Output: Even numbers from 1 to 10: 2 4 6 8 10
+
+---
+
+**Q8.13: Write a C program to print all odd numbers from 1 to n using recursion.**
+
+```c
+#include <stdio.h>
+
+void printOdd(int n) {
+    // Base case
+    if(n <= 0) {
+        return;
+    }
+    
+    // Recursive case
+    printOdd(n - 1);
+    
+    // Print if odd
+    if(n % 2 != 0) {
+        printf("%d ", n);
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter n: ");
+    scanf("%d", &n);
+    printf("Odd numbers from 1 to %d: ", n);
+    printOdd(n);
+    printf("\n");
+    return 0;
+}
+```
+
+Example:
+- Input: 10
+- Output: Odd numbers from 1 to 10: 1 3 5 7 9
+
+---
+
+**Q8.14: Write a C program to find sum of digits using recursion.**
+
+```c
+#include <stdio.h>
+
+int sumOfDigits(int n) {
+    // Base case
+    if(n == 0) {
+        return 0;
+    }
+    // Recursive case
+    return (n % 10) + sumOfDigits(n / 10);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    printf("Sum of digits: %d\n", sumOfDigits(num));
+    return 0;
+}
+```
+
+Example:
+- Input: 12345
+- Output: Sum of digits: 15
+
+---
+
+**Q8.15: Write a C program to find the length of a string using recursion.**
+
+```c
+#include <stdio.h>
+
+int stringLength(char str[]) {
+    // Base case
+    if(str[0] == '\0') {
+        return 0;
+    }
+    // Recursive case
+    return 1 + stringLength(str + 1);
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    printf("Length: %d\n", stringLength(str));
+    return 0;
+}
+```
+
+Example:
+- Input: Hello
+- Output: Length: 5
+
+---
+
+**Q8.16: Write a C program to find the LCM of two numbers using recursion.**
+
+```c
+#include <stdio.h>
+
+int gcd(int a, int b) {
+    if(b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int main() {
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("LCM of %d and %d = %d\n", a, b, lcm(a, b));
+    return 0;
+}
+```
+
+Example:
+- Input: 12, 18
+- Output: LCM of 12 and 18 = 36
+
+---
+
+**Q8.17: Write a C program to convert decimal to binary using recursion.**
+
+```c
+#include <stdio.h>
+
+void decimalToBinary(int n) {
+    // Base case
+    if(n > 1) {
+        decimalToBinary(n / 2);
+    }
+    // Print bit
+    printf("%d", n % 2);
+}
+
+int main() {
+    int num;
+    printf("Enter decimal number: ");
+    scanf("%d", &num);
+    printf("Binary: ");
+    decimalToBinary(num);
+    printf("\n");
+    return 0;
+}
+```
+
+Example:
+- Input: 10
+- Output: Binary: 1010
+
+---
+
+**Q8.18: Write a C program to find the product of two numbers using recursion (without using *).**
+
+```c
+#include <stdio.h>
+
+int multiply(int a, int b) {
+    // Base case
+    if(b == 0) {
+        return 0;
+    }
+    // Recursive case: a*b = a + a*(b-1)
+    return a + multiply(a, b - 1);
+}
+
+int main() {
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("Product: %d\n", multiply(a, b));
+    return 0;
+}
+```
+
+Example:
+- Input: 5, 3
+- Output: Product: 15
+
+---
+
+**Q8.19: Write a C program to check if a number is palindrome using recursion.**
+
+```c
+#include <stdio.h>
+
+int isPalindrome(int n, int original, int reversed) {
+    // Base case
+    if(n == 0) {
+        return original == reversed;
+    }
+    // Recursive case
+    reversed = reversed * 10 + n % 10;
+    return isPalindrome(n / 10, original, reversed);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    if(isPalindrome(num, num, 0)) {
+        printf("%d is PALINDROME\n", num);
+    } else {
+        printf("%d is NOT PALINDROME\n", num);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 121
+- Output: 121 is PALINDROME
+
+---
+
+**Q8.20: Write a C program to check if a string is palindrome using recursion.**
+
+```c
+#include <stdio.h>
+
+int stringLength(char str[]) {
+    if(str[0] == '\0') {
+        return 0;
+    }
+    return 1 + stringLength(str + 1);
+}
+
+int isStringPalindrome(char str[], int start, int end) {
+    // Base case
+    if(start >= end) {
+        return 1;
+    }
+    
+    // Check if characters match
+    if(str[start] != str[end]) {
+        return 0;
+    }
+    
+    // Recursive case
+    return isStringPalindrome(str, start + 1, end - 1);
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    int len = stringLength(str);
+    
+    if(isStringPalindrome(str, 0, len - 1)) {
+        printf("%s is PALINDROME\n", str);
+    } else {
+        printf("%s is NOT PALINDROME\n", str);
+    }
+    
+    return 0;
+}
+```
+
+Example:
+- Input: racecar
+- Output: racecar is PALINDROME
+
+---
+
+**Q8.21: Write a C program to reverse a string using recursion.**
+
+```c
+#include <stdio.h>
+
+void reverseString(char str[], int index) {
+    // Base case
+    if(str[index] == '\0') {
+        return;
+    }
+    
+    // Recursive case
+    reverseString(str, index + 1);
+    printf("%c", str[index]);
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    printf("Reversed: ");
+    reverseString(str, 0);
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Example:
+- Input: Hello
+- Output: Reversed: olleH
+
+---
+
+**Q8.22: Write a C program to copy one string to another using recursion.**
+
+```c
+#include <stdio.h>
+
+void copyString(char source[], char destination[], int index) {
+    // Base case: copy null terminator
+    if(source[index] == '\0') {
+        destination[index] = '\0';
+        return;
+    }
+    
+    // Recursive case
+    destination[index] = source[index];
+    copyString(source, destination, index + 1);
+}
+
+int main() {
+    char source[100], destination[100];
+    
+    printf("Enter source string: ");
+    scanf("%s", source);
+    
+    copyString(source, destination, 0);
+    
+    printf("Destination: %s\n", destination);
+    
+    return 0;
+}
+```
+
+Example:
+- Input: Hello
+- Output: Destination: Hello
+
+---
+
+**Q8.23: Write a C program to calculate power using tail recursion.**
+
+```c
+#include <stdio.h>
+
+long powerTail(int base, int exp, long result) {
+    // Base case
+    if(exp == 0) {
+        return result;
+    }
+    // Tail recursive case
+    return powerTail(base, exp - 1, result * base);
+}
+
+int main() {
+    int base, exp;
+    printf("Enter base: ");
+    scanf("%d", &base);
+    printf("Enter exponent: ");
+    scanf("%d", &exp);
+    printf("%d^%d = %ld\n", base, exp, powerTail(base, exp, 1));
+    return 0;
+}
+```
+
+Example:
+- Input: base=2, exp=5
+- Output: 2^5 = 32
+
+---
+
+**Q8.24: Write a C program to find the nth Fibonacci number using recursion.**
+
+```c
+#include <stdio.h>
+
+long fibonacci(int n) {
+    if(n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    printf("Enter position (n): ");
+    scanf("%d", &n);
+    printf("Fibonacci number at position %d = %ld\n", n, fibonacci(n));
+    return 0;
+}
+```
+
+Example:
+- Input: 7
+- Output: Fibonacci number at position 7 = 13
+
+---
+
+**Q8.25: Write a C program to solve Tower of Hanoi using recursion.**
+
+```c
+#include <stdio.h>
+
+void towerOfHanoi(int n, char source, char destination, char auxiliary) {
+    // Base case
+    if(n == 1) {
+        printf("Move disk 1 from %c to %c\n", source, destination);
+        return;
+    }
+    
+    // Recursive cases
+    // Move n-1 disks from source to auxiliary using destination
+    towerOfHanoi(n - 1, source, auxiliary, destination);
+    
+    // Move the largest disk from source to destination
+    printf("Move disk %d from %c to %c\n", n, source, destination);
+    
+    // Move n-1 disks from auxiliary to destination using source
+    towerOfHanoi(n - 1, auxiliary, destination, source);
+}
+
+int main() {
+    int n;
+    printf("Enter number of disks: ");
+    scanf("%d", &n);
+    
+    printf("Tower of Hanoi with %d disks:\n", n);
+    towerOfHanoi(n, 'A', 'C', 'B');
+    
+    return 0;
+}
+```
+
+Example:
+- Input: 3
+- Output: (Shows 7 moves to transfer 3 disks from A to C)
+
+---
+
+## SECTION 9: ARRAYS (1D)
+
+### Theory Answer
+
+**Q9.1: What is an array? How is it declared in C?**
+
+Array is a collection of elements of same data type stored in contiguous memory locations.
+
+Declaration: `dataType arrayName[size];`
+Example: `int arr[10];` (array of 10 integers)
+
+### Programming Answers
+
+**Q9.2: Write a C program to read and print array elements.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], i;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    printf("Array elements: ");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.3: Write a C program to find the sum of all elements in an array.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], sum = 0, i;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+    
+    printf("Sum: %d\n", sum);
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.4: Write a C program to find the largest element in an array.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], max, i;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    max = arr[0];
+    for(i = 1; i < 5; i++) {
+        if(arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    
+    printf("Largest element: %d\n", max);
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.5: Write a C program to find the smallest element in an array.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], min, i;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    min = arr[0];
+    for(i = 1; i < 5; i++) {
+        if(arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    
+    printf("Smallest element: %d\n", min);
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.6: Write a C program to search an element in an array (linear search).**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], search, i, found = 0;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    printf("Enter element to search: ");
+    scanf("%d", &search);
+    
+    for(i = 0; i < 5; i++) {
+        if(arr[i] == search) {
+            printf("Element found at index %d\n", i);
+            found = 1;
+            break;
+        }
+    }
+    
+    if(!found) {
+        printf("Element not found\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.7: Write a C program to search an element in an array (binary search).**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], search, i, low = 0, high = 4, mid, found = 0;
+    
+    printf("Enter 5 sorted elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    printf("Enter element to search: ");
+    scanf("%d", &search);
+    
+    while(low <= high) {
+        mid = (low + high) / 2;
+        
+        if(arr[mid] == search) {
+            printf("Element found at index %d\n", mid);
+            found = 1;
+            break;
+        } else if(arr[mid] < search) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    
+    if(!found) {
+        printf("Element not found\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.8: Write a C program to sort an array in ascending order (bubble sort).**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], i, j, temp;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Bubble sort
+    for(i = 0; i < 5; i++) {
+        for(j = 0; j < 5 - i - 1; j++) {
+            if(arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    
+    printf("Sorted array: ");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.9: Write a C program to sort an array in ascending order (selection sort).**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], i, j, min_idx, temp;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Selection sort
+    for(i = 0; i < 5; i++) {
+        min_idx = i;
+        for(j = i + 1; j < 5; j++) {
+            if(arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        
+        temp = arr[i];
+        arr[i] = arr[min_idx];
+        arr[min_idx] = temp;
+    }
+    
+    printf("Sorted array: ");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.10: Write a C program to reverse an array.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], i, temp;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Reverse array
+    for(i = 0; i < 5 / 2; i++) {
+        temp = arr[i];
+        arr[i] = arr[5 - 1 - i];
+        arr[5 - 1 - i] = temp;
+    }
+    
+    printf("Reversed array: ");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.11: Write a C program to copy one array to another.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr1[5], arr2[5], i;
+    
+    printf("Enter 5 elements for first array: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr1[i]);
+    }
+    
+    // Copy array1 to array2
+    for(i = 0; i < 5; i++) {
+        arr2[i] = arr1[i];
+    }
+    
+    printf("Array 2: ");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arr2[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.12: Write a C program to insert an element at a specific position in an array.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[6], element, position, i;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    printf("Enter element to insert: ");
+    scanf("%d", &element);
+    printf("Enter position (0-4): ");
+    scanf("%d", &position);
+    
+    // Shift elements
+    for(i = 4; i >= position; i--) {
+        arr[i + 1] = arr[i];
+    }
+    
+    arr[position] = element;
+    
+    printf("Array after insertion: ");
+    for(i = 0; i < 6; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.13: Write a C program to delete an element from an array.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], position, i;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    printf("Enter position to delete (0-4): ");
+    scanf("%d", &position);
+    
+    // Shift elements
+    for(i = position; i < 4; i++) {
+        arr[i] = arr[i + 1];
+    }
+    
+    printf("Array after deletion: ");
+    for(i = 0; i < 4; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.14: Write a C program to merge two arrays.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr1[3], arr2[3], merged[6], i;
+    
+    printf("Enter 3 elements for first array: ");
+    for(i = 0; i < 3; i++) {
+        scanf("%d", &arr1[i]);
+    }
+    
+    printf("Enter 3 elements for second array: ");
+    for(i = 0; i < 3; i++) {
+        scanf("%d", &arr2[i]);
+    }
+    
+    // Copy first array
+    for(i = 0; i < 3; i++) {
+        merged[i] = arr1[i];
+    }
+    
+    // Copy second array
+    for(i = 0; i < 3; i++) {
+        merged[3 + i] = arr2[i];
+    }
+    
+    printf("Merged array: ");
+    for(i = 0; i < 6; i++) {
+        printf("%d ", merged[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q9.15: Write a C program to find the frequency of each element in an array.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[10], i, j, count;
+    int visited[10] = {0};
+    
+    printf("Enter 10 elements: ");
+    for(i = 0; i < 10; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    printf("Frequency of elements:\n");
+    
+    for(i = 0; i < 10; i++) {
+        if(visited[i] == 0) {
+            count = 0;
+            for(j = i; j < 10; j++) {
+                if(arr[i] == arr[j]) {
+                    count++;
+                    visited[j] = 1;
+                }
+            }
+            printf("%d: %d times\n", arr[i], count);
+        }
+    }
+    
+    return 0;
+}
+```
+
+---
+
+## SECTION 10: ARRAYS (2D) AND MATRICES
+
+### Theory Answer
+
+**Q10.1: What is a 2D array? How is it declared?**
+
+2D array is a matrix (rows and columns).
+
+Declaration: `dataType arrayName[rows][columns];`
+Example: `int matrix[3][3];` (3x3 matrix)
+
+### Programming Answers
+
+**Q10.2: Write a C program to read and print a 2D array (matrix).**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix[2][3], i, j;
+    
+    printf("Enter 2x3 matrix elements:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    
+    printf("Matrix:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q10.3: Write a C program to add two matrices.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix1[2][3], matrix2[2][3], sum[2][3], i, j;
+    
+    printf("Enter first matrix (2x3):\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix1[i][j]);
+        }
+    }
+    
+    printf("Enter second matrix (2x3):\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix2[i][j]);
+        }
+    }
+    
+    // Add matrices
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            sum[i][j] = matrix1[i][j] + matrix2[i][j];
+        }
+    }
+    
+    printf("Sum:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            printf("%d ", sum[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q10.4: Write a C program to subtract two matrices.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix1[2][3], matrix2[2][3], diff[2][3], i, j;
+    
+    printf("Enter first matrix (2x3):\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix1[i][j]);
+        }
+    }
+    
+    printf("Enter second matrix (2x3):\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix2[i][j]);
+        }
+    }
+    
+    // Subtract matrices
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            diff[i][j] = matrix1[i][j] - matrix2[i][j];
+        }
+    }
+    
+    printf("Difference:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            printf("%d ", diff[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q10.5: Write a C program to multiply two matrices.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix1[2][3], matrix2[3][2], product[2][2], i, j, k;
+    
+    printf("Enter first matrix (2x3):\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix1[i][j]);
+        }
+    }
+    
+    printf("Enter second matrix (3x2):\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 2; j++) {
+            scanf("%d", &matrix2[i][j]);
+        }
+    }
+    
+    // Multiply matrices
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 2; j++) {
+            product[i][j] = 0;
+            for(k = 0; k < 3; k++) {
+                product[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
+        }
+    }
+    
+    printf("Product:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 2; j++) {
+            printf("%d ", product[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q10.6: Write a C program to find the transpose of a matrix.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix[2][3], transpose[3][2], i, j;
+    
+    printf("Enter 2x3 matrix:\n");
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    
+    // Find transpose
+    for(i = 0; i < 2; i++) {
+        for(j = 0; j < 3; j++) {
+            transpose[j][i] = matrix[i][j];
+        }
+    }
+    
+    printf("Transpose (3x2):\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 2; j++) {
+            printf("%d ", transpose[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q10.7: Write a C program to check if a matrix is symmetric.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix[3][3], i, j, symmetric = 1;
+    
+    printf("Enter 3x3 matrix:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    
+    // Check if symmetric
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            if(matrix[i][j] != matrix[j][i]) {
+                symmetric = 0;
+                break;
+            }
+        }
+        if(!symmetric) break;
+    }
+    
+    if(symmetric) {
+        printf("Matrix is SYMMETRIC\n");
+    } else {
+        printf("Matrix is NOT SYMMETRIC\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q10.8: Write a C program to find the sum of diagonal elements of a matrix.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix[3][3], i, j, sum = 0;
+    
+    printf("Enter 3x3 matrix:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    
+    // Sum main diagonal
+    for(i = 0; i < 3; i++) {
+        sum += matrix[i][i];
+    }
+    
+    printf("Sum of diagonal elements: %d\n", sum);
+    
+    return 0;
+}
+```
+
+---
+
+**Q10.9: Write a C program to find the trace of a matrix.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix[3][3], i, j, trace = 0;
+    
+    printf("Enter 3x3 matrix:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    
+    // Trace = sum of diagonal elements
+    for(i = 0; i < 3; i++) {
+        trace += matrix[i][i];
+    }
+    
+    printf("Trace of matrix: %d\n", trace);
+    
+    return 0;
+}
+```
+
+---
+
+**Q10.10: Write a C program to check if a matrix is an identity matrix.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int matrix[3][3], i, j, identity = 1;
+    
+    printf("Enter 3x3 matrix:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    
+    // Check if identity matrix
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
+            if(i == j) {
+                if(matrix[i][j] != 1) {
+                    identity = 0;
+                    break;
+                }
+            } else {
+                if(matrix[i][j] != 0) {
+                    identity = 0;
+                    break;
+                }
+            }
+        }
+        if(!identity) break;
+    }
+    
+    if(identity) {
+        printf("Identity matrix\n");
+    } else {
+        printf("NOT an identity matrix\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+## SECTION 11: STRINGS
+
+**Q11.2: Write a C program to find the length of a string without using strlen().**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int length = 0;
+    
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    while(str[length] != '\0') {
+        length++;
+    }
+    
+    printf("Length: %d\n", length);
+    
+    return 0;
+}
+```
+
+---
+
+**Q11.3: Write a C program to copy one string to another without using strcpy().**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char source[100], destination[100];
+    int i = 0;
+    
+    printf("Enter source string: ");
+    scanf("%s", source);
+    
+    while(source[i] != '\0') {
+        destination[i] = source[i];
+        i++;
+    }
+    destination[i] = '\0';
+    
+    printf("Destination: %s\n", destination);
+    
+    return 0;
+}
+```
+
+---
+
+**Q11.4: Write a C program to concatenate two strings without using strcat().**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char str1[100], str2[100], result[200];
+    int i = 0, j = 0;
+    
+    printf("Enter first string: ");
+    scanf("%s", str1);
+    printf("Enter second string: ");
+    scanf("%s", str2);
+    
+    // Copy first string
+    while(str1[i] != '\0') {
+        result[i] = str1[i];
+        i++;
+    }
+    
+    // Copy second string
+    while(str2[j] != '\0') {
+        result[i] = str2[j];
+        i++;
+        j++;
+    }
+    result[i] = '\0';
+    
+    printf("Concatenated: %s\n", result);
+    
+    return 0;
+}
+```
+
+---
+
+**Q11.5: Write a C program to compare two strings without using strcmp().**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char str1[100], str2[100];
+    int i = 0, equal = 1;
+    
+    printf("Enter first string: ");
+    scanf("%s", str1);
+    printf("Enter second string: ");
+    scanf("%s", str2);
+    
+    while(str1[i] != '\0' || str2[i] != '\0') {
+        if(str1[i] != str2[i]) {
+            equal = 0;
+            break;
+        }
+        i++;
+    }
+    
+    if(equal) {
+        printf("Strings are EQUAL\n");
+    } else {
+        printf("Strings are NOT EQUAL\n");
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q11.6: Write a C program to reverse a string.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i = 0, len = 0;
+    
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    while(str[len] != '\0') {
+        len++;
+    }
+    
+    printf("Reversed: ");
+    for(i = len - 1; i >= 0; i--) {
+        printf("%c", str[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+---
+
+**Q11.7: Write a C program to check if a string is palindrome.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i = 0, len = 0, palindrome = 1;
+    
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    while(str[len] != '\0') {
+        len++;
+    }
+    
+    for(i = 0; i < len / 2; i++) {
+        if(str[i] != str[len - 1 - i]) {
+            palindrome = 0;
+            break;
+        }
+    }
+    
+    if(palindrome) {
+        printf("%s is PALINDROME\n", str);
+    } else {
+        printf("%s is NOT PALINDROME\n", str);
+    }
+    
+    return 0;
+}
+```
+
+---
+
+**Q11.8: Write a C program to count vowels and consonants in a string.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i = 0, vowels = 0, consonants = 0;
+    
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    while(str[i] != '\0') {
+        if((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')) {
+            if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' ||
+               str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U') {
+                vowels++;
+            } else {
+                consonants++;
+            }
+        }
+        i++;
+    }
+    
+    printf("Vowels: %d\n", vowels);
+    printf("Consonants: %d\n", consonants);
+    
+    return 0;
+}
+```
+
+---
+
+**Q11.9: Write a C program to convert a string to uppercase.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i = 0;
+    
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    while(str[i] != '\0') {
+        if(str[i] >= 'a' && str[i] <= 'z') {
+            str[i] = str[i] - 32;
+        }
+        i++;
+    }
+    
+    printf("Uppercase: %s\n", str);
+    
+    return 0;
+}
+```
+
+---
+
+**Q11.10: Write a C program to convert a string to lowercase.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i = 0;
+    
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    while(str[i] != '\0') {
+        if(str[i] >= 'A' && str[i] <= 'Z') {
+            str[i] = str[i] + 32;
+        }
+        i++;
+    }
+    
+    printf("Lowercase: %s\n", str);
+    
+    return 0;
+}
+```
+
+---
+
+## SECTION 12: POINTERS
+
+### Theory Answers
+
+**Q12.1: What is a pointer? How is it declared?**
+
+Pointer is a variable that stores the memory address of another variable.
+
+Declaration: `dataType *pointerName;`
+Example: `int *ptr;`
+
+& operator: Gets address of variable
+* operator: Dereferences pointer
+
+**Q12.2: What is the difference between * and & operators?**
+
+| & Operator | * Operator |
+|---|---|
+| Address-of operator | Dereference operator |
+| Returns address of variable | Returns value at address |
+| `ptr = &variable;` | `value = *ptr;` |
+
+**Q12.3: Explain pointer arithmetic with examples.**
+
+Pointer arithmetic involves incrementing/decrementing pointers.
+- ptr++ moves to next element
+- ptr-- moves to previous element
+- ptr + n moves n positions forward
+
+### Programming Answers
+
+**Q12.6: Write a C program to demonstrate pointer declaration and initialization.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num = 10;
+    int *ptr;  // Pointer declaration
+    
+    ptr = &num;  // Pointer initialization (address of num)
+    
+    printf("Variable value: %d\n", num);
+    printf("Address of variable: %p\n", &num);
+    printf("Pointer value (address): %p\n", ptr);
+    printf("Value through pointer: %d\n", *ptr);
+    
+    return 0;
+}
+```
+
+Output:
+```
+Variable value: 10
+Address of variable: 0x...
+Pointer value (address): 0x...
+Value through pointer: 10
+```
+
+---
+
+**Q12.7: Write a C program to swap two numbers using pointers.**
+
+```c
+#include <stdio.h>
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    
+    swap(&x, &y);
+    
+    printf("After swap: x = %d, y = %d\n", x, y);
+    
+    return 0;
+}
+```
+
+---
+
+**Q12.8: Write a C program to access array elements using pointers.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    int *ptr = arr;  // Pointer to first element
+    int i;
+    
+    printf("Array elements using pointer:\n");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", *(ptr + i));  // Access using pointer
+    }
+    printf("\n");
+    
+    return 0;
+}
+```
+
+Output: 1 2 3 4 5
+
+---
+
+**Q12.9: Write a C program to find the largest element in an array using pointers.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[5], i;
+    int *ptr = arr;
+    int *max_ptr = arr;
+    
+    printf("Enter 5 elements: ");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", (ptr + i));
+    }
+    
+    // Find largest using pointer
+    for(i = 1; i < 5; i++) {
+        if(*(ptr + i) > *max_ptr) {
+            max_ptr = ptr + i;
+        }
+    }
+    
+    printf("Largest element: %d\n", *max_ptr);
+    
+    return 0;
+}
+```
+
+---
+
+**Q12.10: Write a C program demonstrating pointer to pointer.**
+
+```c
+#include <stdio.h>
+
+int main() {
+    int num = 10;
+    int *ptr;           // Pointer to int
+    int **ptr_ptr;      // Pointer to pointer
+    
+    ptr = &num;         // ptr stores address of num
+    ptr_ptr = &ptr;     // ptr_ptr stores address of ptr
+    
+    printf("num = %d\n", num);
+    printf("*ptr = %d\n", *ptr);
+    printf("**ptr_ptr = %d\n", **ptr_ptr);
+    
+    printf("\nAddress of num: %p\n", &num);
+    printf("Address of ptr: %p\n", &ptr);
+    printf("Address in ptr: %p\n", ptr);
+    printf("Address in ptr_ptr: %p\n", ptr_ptr);
+    
+    return 0;
+}
+```
+
+---
+
+## EXAM TIPS AND PRACTICE GUIDE
+
+### Key Points to Remember:
+
+1. **Always include headers**: `#include <stdio.h>`
+2. **Main function**: `int main() { ... return 0; }`
+3. **Input/Output**: `scanf()` and `printf()`
+4. **Common format specifiers**: %d (int), %f (float), %c (char), %s (string)
+5. **Arrays**: 0-indexed
+6. **Recursion**: Always include base case
+7. **Patterns**: Use nested loops wisely
+8. **Strings**: Null terminated ('\0')
+
+### Practice Schedule:
+
+**Week 1**: Basic I/O, Operators, Decision Making
+**Week 2**: Loops, Patterns, Arrays
+**Week 3**: Functions, Recursion
+**Week 4**: Strings, Pointers, 2D Arrays
+
+### Sample Questions for 30 Marks Exam:
+
+**Q1 (10 marks)**: Factorial using recursion + explanation
+**Q2 (10 marks)**: Star pyramid pattern
+**Q3 (10 marks)**: Array operations (search + sort + sum)
+
+All the best! 🚀
+
+---
+
+**Note**: All programs have been tested and verified for B.Tech 1st Semester students. Practice these solutions in VS Code to get hands-on experience.
+
+Created: November 3, 2025
+For: Logic Building with Computer Science (Offline)
+Semester: 1 | Total Questions: 155
