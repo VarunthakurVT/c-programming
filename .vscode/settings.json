@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "SIGNED.C": "cpp"
+        "SIGNED.C": "cpp",
+        "6_FACTORIAL.C": "cpp"
     },
     "cSpell.words": [
         "goodmorning"

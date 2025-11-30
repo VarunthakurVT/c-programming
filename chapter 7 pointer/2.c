@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include<stdio.h>// poingter is used to see the memory location
 int hello(int a){
 return (a*19);
 }
